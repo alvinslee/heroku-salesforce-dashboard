@@ -1,0 +1,61 @@
+<template>
+  <div class="slds-page-header">
+    <div class="slds-page-header__row">
+      <div class="slds-page-header__col-title">
+        <div class="slds-media">
+          <div class="slds-media__figure">
+            <span
+              class="slds-icon_container slds-icon-standard-report"
+              title="Chart"
+            >
+              <svg class="slds-icon slds-page-header__icon" aria-hidden="true">
+                <use
+                  xlink:href="resources/assets/icons/standard-sprite/svg/symbols.svg#report"
+                ></use>
+              </svg>
+              <span class="slds-assistive-text">Chart</span>
+            </span>
+          </div>
+          <div class="slds-media__body">
+            <div class="slds-page-header__name">
+              <div class="slds-page-header__name-title">
+                <h1>
+                  <span
+                    class="slds-page-header__title slds-truncate"
+                    title="Externally Hosted Dashboard w/ Salesforce Data"
+                    >Externally Hosted Dashboard w/ Salesforce Data</span
+                  >
+                </h1>
+              </div>
+            </div>
+            <p class="slds-page-header__name-meta">
+              Data from Salesforce Change Data Capture events
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="center">
+    <template if:true={socketReady}>
+      <div class="charts">
+        <div class="slds-grid slds-gutters slds-wrap">
+          <div class="slds-col">
+            <my-chart sobject="Account" field="Industry" socket={socket}></my-chart>
+          </div>
+          <div class="slds-col">
+            <my-chart sobject="Case" field="Status" socket={socket}></my-chart>
+          </div>
+        </div>
+        <div class="slds-grid slds-gutters slds-wrap">
+          <div class="slds-col">
+            <my-chart sobject="Contact" field="LeadSource" socket={socket}></my-chart>
+          </div>
+          <div class="slds-col">
+            <my-chart sobject="Lead" field="Status" socket={socket}></my-chart>
+          </div>
+        </div>
+      </div>
+    </template>
+  </div>
+</template>
